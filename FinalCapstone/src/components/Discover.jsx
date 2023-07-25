@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from './Modal';
 import {Link, useNavigate} from 'react-router-dom'
 import SeasonsModal from './SeasonsModal';
+import Sort from './Sort';
+import SortLogic from "./SortLogic";
 
 export default function Discover() {
     const [data, setData] = React.useState([]);
@@ -10,6 +12,8 @@ export default function Discover() {
     const [selectedInfo, setSelectedInfo] = React.useState(null); //
     const [openDialog, setOpenDialog] = React.useState(false); //opens the dialog to the seasons
     const navigate = useNavigate()
+    const [isModalOpen, setModalOpen] = React.useState(false); //for open/close Modal
+    const [selectOption, setSelectOption] = React.useState("SORT");
 
 
     /**
@@ -33,10 +37,13 @@ export default function Discover() {
     
     function handleImageClick(item) {
         setSelectedImage(item);
+        setModalOpen(true);
         // setOpenDialog(true)
     }
     function handleCloseModal() {
-        setSelectedImage(null);
+        // setSelectedImage(null);
+        setModalOpen(false);
+        // window.location.reload();
         navigate('/Home')
     }
     
@@ -50,11 +57,24 @@ export default function Discover() {
         setOpenDialog(false) //close dialog
         
     }
+
+
+    /**
+     * Handle the sorting option change
+     */
+  function handleSortChange(selectedOption) {
+    setSelectOption(selectedOption);
+  }
+
+  /**
+   * direclt grabbing from Sortlogic component
+   */
+  const sortedData = SortLogic({ data, selectOption });
     /**
      * maps over the api object which allows us to click
      * on an image to show image modal
      */
-    const discoverShows = data.slice(0, showMore)
+    const discoverShows = sortedData.slice(0, showMore)
         .map(function (item) {
             return (
              <div key={item.id}>
@@ -65,7 +85,6 @@ export default function Discover() {
                  </Link>
                 
             </div>   
-            {/* <Link to="/SeasonsModal">view full info</Link>  */}
             </div>
             )
         })
@@ -74,12 +93,16 @@ export default function Discover() {
 
     return (
         <div >
-            <h5>DISCOVER</h5>
+            <div className='discover-titles'>
+                <h5>DISCOVER</h5>
+                <Sort onSortChange={handleSortChange}/>
+            </div>
+            
             <div className='discover-carousel'>
                {discoverShows }
             </div>
             
-            {selectedImage &&  (
+            {isModalOpen &&  (
                 <Modal
                     title={selectedImage.title}
                     image={selectedImage.image}
