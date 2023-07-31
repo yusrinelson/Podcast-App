@@ -1,19 +1,24 @@
 *{
     box-sizing:border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Inter', sans-serif;
     
     
 }
 
 body{
     margin: 0;
-    background-color:  #494949 ;
+    background-color:#111112 ;
 }
-
+.loading-state h1{
+  color: white;
+}
 /* Navbar */
 .nav{
-    background-color: #F5F5F5;;
+  position: sticky;
+  top: -5px;
+    background: #f0f0f0;
     display: flex;
+    align-items: center;
     padding: 20px;
 }
 
@@ -30,10 +35,21 @@ body{
     margin-left:10px;
 }
 
+
 /*Carousel Suggestions*/
+
+.for-you-header{
+  padding-top: 1px;
+  padding-bottom: 5px;
+  background: linear-gradient(to bottom, aqua, transparent);
+}
+.forYou-box h4{
+  margin-left: 10px ;
+}
 .carousel-box{
     margin: 20px 0px 0px 10px;
     display: flex;
+    overflow: hidden;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
   }
@@ -51,14 +67,47 @@ body{
   
 
 /*Discover*/
-.discover-carousel{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding-left: 20px;
+.discover-title{
+  background: linear-gradient(to bottom, aqua, transparent);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
 }
 
-.discover-carousel img{
+
+.sort-shows select {
+  height: 30px;
+  margin-right: 40%;
+}
+
+
+.sort-shows {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* .search-shows{
+  flex: 1;
+  display: flex;
+  align-items: center;
+} */
+
+.search-shows input {
+height: 30px;
+}
+
+.discover-shows{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+.discover-shows img{
+  padding-bottom: 10px;
   border-radius: 5px;
+  width: 150px;
 }
 .arrows{
     display: flex;
@@ -166,6 +215,7 @@ body{
 
 /* SeasonsModal */
   .details-dialog {
+    background-color: #c7c7c7;
     z-index: 9999;
     width: 100%;
     height: 100%;
@@ -183,6 +233,15 @@ body{
     width:120px;
   border-radius: 5px;
   }
+
+  .genres{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#5c545c;
+  }
+ 
   .season {
     margin-bottom: 20px;
   }
@@ -196,7 +255,7 @@ body{
   align-items: flex-start;
   margin-bottom: 20px;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: #f0f0f0d8;
   border-radius: 8px;
   }
  
@@ -219,18 +278,81 @@ body{
     margin: 0;
     padding-top: 6px;
    }
-   dialog[close] {
-    display: none;
+   select{
+    max-width: 50%;
+    height: 25px;
   }
-
   .body-titles{
     display: flex;
+    justify-content: flex-end;
+    margin: 10px;
   }
-  .body-titles h4{
-    margin-right: auto;
-  }
+
 .close-button{
   position: absolute;
   top:15px;
   right:8px;
 }
+
+/*user Profile modal*/
+.modal-box{
+  background-color: aqua;
+  width: 110px; 
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  color: #fff;
+ 
+}
+
+.modal-box h5{
+  /* margin-top: 5px; */
+  line-height: 2px;
+  padding-left: 10px;
+}
+
+
+
+/* audio-modal */
+/* .audio-modal{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  height: 10%;
+  width: 100%
+} */
+
+/* FavouritesPage */
+.favourites-header{
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin: 10px;
+}
+.favourites-container {
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.favourite-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.favourite-card img {
+  width: 20px;
+  margin-bottom: 8px;
+}
+
+.favourite-card p {
+  margin: 0;
+}
+

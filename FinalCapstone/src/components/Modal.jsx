@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default function Modal(item) {
     const [fullDescription, setFullDescription] = React.useState(false)
 
@@ -14,8 +15,7 @@ export default function Modal(item) {
                 <div className="overlay-preview">
                    <h5 className="seasons">SEASONS: {item.seasons}</h5>
                    <img className="information-button" onClick={item.showSeasons} src="/src/images/information-button.png" width="40px"/>
-                   <img className="play-button" src="/src/images/play.png" width="80px"/>
-                   
+                   {/* <img className="play-button" src="/src/images/play.png" width="80px"/> */}
                     <img className="overlay-blur" src={item.image} width="150px" />
                     <img className="overlay-image" src={item.image} width="150px" />
                     
@@ -24,7 +24,7 @@ export default function Modal(item) {
               
                     <p>{fullDescription ? item.text : descriptionText}</p>
 
-                    <p className="updated-date">updated: {item.updated}</p>
+                    <p className="updated-date">Updated: {item.updated}</p>
 
                 {!item.fullDescription && (<button onClick={handleDescription}>full description</button>)}
                 <br />
