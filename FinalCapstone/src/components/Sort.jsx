@@ -18,10 +18,6 @@ export default function Sort({onSearch, onSortChange}) {
       setSearch(event.target.value);
       onSearch(event.target.value)
     }
-  
-    // function handleSearch() {
-    //   onSearch(search); // Pass the search query value to the parent component
-    // }
 
     return (
         <div className="sort-shows">

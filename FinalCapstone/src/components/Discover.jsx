@@ -3,14 +3,12 @@ import Modal from './Modal';
 import { Link, useNavigate } from 'react-router-dom'
 import SeasonsModal from './SeasonsModal';
 import Sort from './Sort';
-// import SortLogic from "./SortLogic";
 import Navbar from './Navbar';
 import ForYou from "./ForYou";
-// import { supabase } from '../config/supabaseClient';
 import Fuse from 'fuse.js';
 
 export default function Discover() {
-    // console.log(supabase)
+    
     const [data, setData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true)
     const [showMore, setShowMore] = React.useState(10) //shows more images
@@ -20,7 +18,6 @@ export default function Discover() {
     const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = React.useState(false); //for open/close Modal
     const [selectOption, setSelectOption] = React.useState("SORT");
-    // const [searchShow, setSearchShow] = React.useState([]) //holds filtered shows
     const [search, setSearch] = React.useState('');
 
     /**
@@ -152,45 +149,45 @@ export default function Discover() {
 
     return (
         <div >
-            {isLoading ? (<div className='loading-state'><h1>LOADING..</h1>.</div>) 
-            
-            : (<div>
-            <Navbar />
-            <ForYou />
-            <div className='discover-title'>
-                <h4>DISCOVER</h4>
-            </div>
-            <div className="sorting">
-                <Sort onSortChange={setSelectOption} onSearch={handleChange} />
-            </div>
+            {isLoading ? (<div className='loading-state'><h1>LOADING..</h1>.</div>)
+
+                : (<div>
+                    <Navbar />
+                    <ForYou />
+                    <div className='discover-title'>
+                        <h4>DISCOVER SHOWS</h4>
+                    </div>
+                    <div className="sorting">
+                        <Sort onSortChange={setSelectOption} onSearch={handleChange} />
+                    </div>
 
 
-            <div className='discover-shows'>
-                {DiscoverShows}
+                    <div className='discover-shows'>
+                        {DiscoverShows}
 
-            </div>
+                    </div>
 
-            {isModalOpen && (
-                <Modal
-                    title={selectedImage.title}
-                    image={selectedImage.image}
-                    alt={selectedImage.id}
-                    text={selectedImage.description} limit={200}
-                    onClose={handleCloseModal}
-                    seasons={selectedImage.seasons}
-                    updated={new Date(selectedImage.updated).toLocaleDateString("en-US", "short")}
-                    showSeasons={() => handleShowId(selectedImage.id)}
-                />
-            )}
+                    {isModalOpen && (
+                        <Modal
+                            title={selectedImage.title}
+                            image={selectedImage.image}
+                            alt={selectedImage.id}
+                            text={selectedImage.description} limit={200}
+                            onClose={handleCloseModal}
+                            seasons={selectedImage.seasons}
+                            updated={new Date(selectedImage.updated).toLocaleDateString("en-US", "short")}
+                            showSeasons={() => handleShowId(selectedImage.id)}
+                        />
+                    )}
 
-            <div className='arrows'>
-                <img src="/src/images/down.png" onClick={toggleMore} className='up-arrow' />
-                <img src="/src/images/up.png" onClick={toggleLessDisabled ? toggleLess.disabled : toggleLess} className='down-arrow' />
-            </div>
-            <SeasonsModal
-                showId={selectedInfo}
-                openDialog={openDialog}
-                onClose={onCloseDialog} />
+                    <div className='arrows'>
+                        <img src="/src/images/down.png" onClick={toggleMore} className='up-arrow' />
+                        <img src="/src/images/up.png" onClick={toggleLessDisabled ? toggleLess.disabled : toggleLess} className='down-arrow' />
+                    </div>
+                    <SeasonsModal
+                        showId={selectedInfo}
+                        openDialog={openDialog}
+                        onClose={onCloseDialog} />
                 </div>)}
         </div>
     )

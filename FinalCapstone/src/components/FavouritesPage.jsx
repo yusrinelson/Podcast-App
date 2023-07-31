@@ -1,16 +1,14 @@
-// import Favourites from "./Favourites"
-// import PropTypes from "prop-types"
 import React from "react"
 import { supabase } from "../config/supabaseClient"
 import FavouriteCard from "./FavouriteCard"
 import Sort from "./Sort"
 import Fuse from 'fuse.js';
 
-export default function Favourites(){
+export default function FavouritesPage(){
     const [fetchError, setFetchError] = React.useState(null)
     const [show, setShow] = React.useState(null)
     const [selectOption, setSelectOption] = React.useState("SORT");
-    // const [searchShow, setSearchShow] = React.useState([]) //holds filtered shows
+
     const [search, setSearch] = React.useState('');
 
 
@@ -81,7 +79,6 @@ export default function Favourites(){
 
         return filteredData;
     }
-
  
 
     return(
@@ -114,54 +111,3 @@ export default function Favourites(){
         </div>
     )
 }
-
-
-
-
-// <div className="favourites-container">
-// {fetchError && (<p>{fetchError}</p>)}
-// {show && (
-//     <div>
-    
-//         {show.map(shows => (
-//             <div key={shows.id} className="favourite-card">
-//                 <img src="/src/images/star-filled.png" alt="star" />
-//                 <p>{shows.title}</p>
-//             </div>
-//         ))}
-//     </div>
-// )}
-// </div>
-
-// FavouritesPage.propTypes ={
-//     selectedEpisodeData: PropTypes.any,
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-// import Favourites from "./Favourites"
-// import PropTypes from "prop-types"
-
-// export default function FavouritesPage({selectedEpisodeData}){
-
-
-
-//     return(
-//         <div>
-//              <Favourites selectedEpisodeData={selectedEpisodeData} />
-//         </div>
-//     )
-// }
-
-// FavouritesPage.propTypes ={
-//     selectedEpisodeData: PropTypes.any,
-// }

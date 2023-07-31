@@ -2,16 +2,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Favourites from './Favourites';
-// import { supabase } from '../config/supabaseClient';
+
 
 export default function SeasonsModal({ showId, openDialog, onClose }) {
 
     const [show, setShow] = useState(null);
     const [error, setError] = useState("");
     const [selectedSeason, setSelectedSeason] = useState(null)
-    //   const [isPlaying, setIsPlaying] = useState(null)
-    //   const [closeDialog, setCloseDialog] = useState(false)
-
     const [selectedEpisodeTitle, setSelectedEpisodeTitle] = useState(null);
     const [selectedEpisodeSeason, setSelectedEpisodeSeason] = useState(null);
     const [selectedEpisodeEpisode, setSelectedEpisodeEpisode] = useState(null);
@@ -60,10 +57,14 @@ export default function SeasonsModal({ showId, openDialog, onClose }) {
             setSelectedEpisodeTitle(show.title);
             setSelectedEpisodeSeason(selectedSeasonObj.season);
             setSelectedEpisodeEpisode(selectedSeasonObj.episodes);
-          }
+        }
     }
 
 
+        //auido
+        // function toggleAudioPlaying (){
+        //     setIsPlaying(prevState => ! prevState)
+        // }
     return (
 
         <dialog open={openDialog} className="details-dialog">
@@ -94,13 +95,13 @@ export default function SeasonsModal({ showId, openDialog, onClose }) {
                         <div key={episode.episode} className="episode">
                             <div className='episode-info'>
                                 <img src={show.image} alt={show.title} width="100px" />
-                                <Favourites 
-                 selectedEpisodeData={{
-                    title: selectedEpisodeTitle,
-                    season: selectedEpisodeSeason,
-                    episode: selectedEpisodeEpisode,
-                  }}
-                />
+                                <Favourites
+                                    selectedEpisodeData={{
+                                        title: selectedEpisodeTitle,
+                                        season: selectedEpisodeSeason,
+                                        episode: selectedEpisodeEpisode,
+                                    }}
+                                />
                                 <div className='wrap-text'>
                                     <h5>{episode.title}</h5>
                                     <p>{episode.description.length > 82 ? `${episode.description.slice(0, 82)}...` : episode.description}</p>

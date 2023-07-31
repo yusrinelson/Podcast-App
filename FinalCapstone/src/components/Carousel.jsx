@@ -36,7 +36,18 @@ export default function Carousel(){
         setOpenDialog(false) //close dialog
         navigate('/Modal')
     }
-    const carousel = carouselImages.slice(0,10).map(item =>(
+
+    const shuffleArray = (shows) => {
+        for (let i = shows.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shows[i], shows[j]] = [shows[j], shows[i]];
+        }
+        return shows;
+    };
+
+  
+
+    const carousel = shuffleArray(carouselImages).slice(0,10).map(item =>(
 
         <div key={item.id}  className="carousel-images">
             <img src={item.image} alt={item.title} 
