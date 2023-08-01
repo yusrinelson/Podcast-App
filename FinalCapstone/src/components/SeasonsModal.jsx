@@ -11,7 +11,8 @@ export default function SeasonsModal({ showId, openDialog, onClose }) {
     const [selectedSeason, setSelectedSeason] = useState(null)
     const [selectedEpisodeTitle, setSelectedEpisodeTitle] = useState(null);
     const [selectedEpisodeSeason, setSelectedEpisodeSeason] = useState(null);
-    const [selectedEpisodeEpisode, setSelectedEpisodeEpisode] = useState(null);
+    // const [selectedEpisodeEpisode, setSelectedEpisodeEpisode] = useState(null);
+    const [selectedEpisodeFavourites, setSelectedEpisodeFavourites] = useState(null);
 
 
 
@@ -56,15 +57,16 @@ export default function SeasonsModal({ showId, openDialog, onClose }) {
         if (selectedSeasonObj) {
             setSelectedEpisodeTitle(show.title);
             setSelectedEpisodeSeason(selectedSeasonObj.season);
-            setSelectedEpisodeEpisode(selectedSeasonObj.episodes);
+            // setSelectedEpisodeEpisode(selectedSeasonObj.episodes);
+            setSelectedEpisodeFavourites(selectedSeasonObj.favourites);
         }
     }
 
 
-        //auido
-        // function toggleAudioPlaying (){
-        //     setIsPlaying(prevState => ! prevState)
-        // }
+    //auido
+    // function toggleAudioPlaying (){
+    //     setIsPlaying(prevState => ! prevState)
+    // }
     return (
 
         <dialog open={openDialog} className="details-dialog">
@@ -99,7 +101,9 @@ export default function SeasonsModal({ showId, openDialog, onClose }) {
                                     selectedEpisodeData={{
                                         title: selectedEpisodeTitle,
                                         season: selectedEpisodeSeason,
-                                        episode: selectedEpisodeEpisode,
+                                        episode: episode.episode,
+                                        favourites: selectedEpisodeFavourites,
+                                        file: episode.file
                                     }}
                                 />
                                 <div className='wrap-text'>

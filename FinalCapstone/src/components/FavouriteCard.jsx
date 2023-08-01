@@ -8,7 +8,6 @@ const FavouriteCard = ({ shows }) => {
             .from("podcastFavorites")
             .delete()
             .eq("id", shows.id)
-        // .select()
 
         if (error) {
             console.log(error)
@@ -23,8 +22,11 @@ const FavouriteCard = ({ shows }) => {
             <div key={shows.id}>
                 <h3>{shows.title}</h3>
                 <p>SEASON {shows.season}</p>
-                {/* <p>EPISODE {shows.episode}</p> */}
+                <p>EPISODE {shows.episode}</p>
                 <p>{shows.favourites}</p>
+                <audio controls>
+                    <source src={shows.file} type="audio/mp3" />
+                </audio>
                 <p>ADDED AT {new Date(shows.created_at).toLocaleString("en-US", "short")}</p>
             </div>
             <button onClick={handleDelete}>delete</button>
