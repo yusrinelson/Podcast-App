@@ -3,13 +3,6 @@
 
 This is a podcast app which is similar to a movie webapp. It allows users to interact with it by signing in with an account , browse through shows, select shows which come with a playable audio, users are able to favourite seasons and more.
 
-
-## API Reference
-
-
-```http
-  https://podcast-api.netlify.app/
-```
 ## Dependencies
 - react
 - react-dom
